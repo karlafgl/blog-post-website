@@ -1,19 +1,19 @@
 const { Router } = require('express');
 const router = Router();
 
-// const { getNotes, createNote, getNote, deleteNote, updateNote } = require('../controllers/notes.controller');
+const {getPosts, createPost, getPost, updatePost, deletePost} = require('../controllers/posts.controller');
 
 router.route('/')
-  .get((req, res) => res.send('GET - POST ROUTES'))
-  .post()
+  .get(getPosts)
+  .post(createPost)
 
 // router.route('/')
 //     .get(getNotes)
 //     .post(createNote);
 
-// router.route('/:id')
-//     .get(getNote)
-//     .delete(deleteNote)
-//     .put(updateNote);
+router.route('/:id')
+    .get(getPost)
+    .put(updatePost)
+    .delete(deletePost)
 
 module.exports = router;
