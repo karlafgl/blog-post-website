@@ -7,10 +7,6 @@ router.route('/')
   .get(getPosts)
   .post(createPost)
 
-// router.route('/')
-//     .get(getNotes)
-//     .post(createNote);
-
 router.route('/:id')
     .get(getPost)
     .put(updatePost)
