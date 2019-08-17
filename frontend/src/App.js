@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Navigation from './components/Navigation';
 import PostsList from './components/PostsList';
 import CreatePost from './components/CreatePost';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Route path="/" exact component={PostsList} />
       <Route path="/edit/:id" component={CreatePost} />
       <Route path="/create" component={CreatePost} />
+      <Footer/>
     </Router>
   );
 }

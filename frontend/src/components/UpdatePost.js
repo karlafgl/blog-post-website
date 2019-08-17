@@ -11,8 +11,8 @@ export default class CreatePost extends Component {
   }
 
   async componentDidMount(){
-    console.log(this.props.match.params)
     const res = await axios.get('http://localhost:3000/api/post')
+    console.log(res.data)
     this.setState({posts: res.data})
     if(this.props.match.params.id){
       this.setState({
@@ -48,7 +48,7 @@ export default class CreatePost extends Component {
   render(){
     return(
       <div className="col-md-6 offset-md-3">
-        <div className="card card-body mt-5">
+        <div className="card card-body">
           <h4>Create a Post</h4>
             <form onSubmit={this.handleOnSubmit}>
               {/* Post Title */}
@@ -76,7 +76,7 @@ export default class CreatePost extends Component {
                 </textarea>
               </div>
 
-              <button type="submit" className="btn btn-info">
+              <button type="submit" className="btn btn-primary">
                 Save
               </button>
             </form>
