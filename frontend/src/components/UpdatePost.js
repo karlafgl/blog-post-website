@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-export default class CreatePost extends Component {
+export default class UpdatePost extends Component {
 
   state={
     posts: [],
@@ -12,7 +12,6 @@ export default class CreatePost extends Component {
 
   async componentDidMount(){
     const res = await axios.get('http://localhost:3000/api/post')
-    console.log(res.data)
     this.setState({posts: res.data})
     if(this.props.match.params.id){
       this.setState({
@@ -29,13 +28,13 @@ export default class CreatePost extends Component {
     }
     if(this.state.editing){
       //edit
+      console.log('new')
       await axios.put('http://localhost:3000/api/post', newPost)
     } else {
       //create
+      console.log('edit')
       await axios.post('http://localhost:3000/api/post', newPost)
     }
-
-    
     window.location.href = '/';
   }
 
@@ -48,8 +47,8 @@ export default class CreatePost extends Component {
   render(){
     return(
       <div className="col-md-6 offset-md-3">
-        <div className="card card-body">
-          <h4>Create a Post</h4>
+        <div className="card card-body mt-5">
+          <h4>Update a Post</h4>
             <form onSubmit={this.handleOnSubmit}>
               {/* Post Title */}
               <div className="form-group">
@@ -76,7 +75,7 @@ export default class CreatePost extends Component {
                 </textarea>
               </div>
 
-              <button type="submit" className="btn btn-primary">
+              <button type="submit" className="btn btn-info">
                 Save
               </button>
             </form>

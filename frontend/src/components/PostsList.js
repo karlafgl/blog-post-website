@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+// import UpdatePost from './UpdatePost';
 
 export default class PostsList extends Component {
 
@@ -14,7 +15,6 @@ export default class PostsList extends Component {
 
     getPosts = async () => {
         const res = await axios.get('http://localhost:3000/api/post')
-        console.log(res)
         this.setState({
             posts: res.data
         });
@@ -31,7 +31,6 @@ export default class PostsList extends Component {
     }
 
     render() {
-      console.log(this.state.posts);
         return (
             <div className="container">
                 <div className="row"> 

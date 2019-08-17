@@ -7,35 +7,39 @@ export default class CreatePost extends Component {
     posts: [],
     title: '',
     post_content: '',
-    editing: false
+    editing: false,
+    id_post:''
   }
 
   async componentDidMount(){
-    console.log(this.props.match.params)
-    const res = await axios.get('http://localhost:3000/api/post')
-    this.setState({posts: res.data})
-    if(this.props.match.params.id){
+    if (this.props.match.params.id) {
+      console.log(this.props.match.params.id)
+      const res = await axios.get('http://localhost:3000/api/post/' + this.props.match.params.id);
+      console.log(res.data)
       this.setState({
-        editing: true
-      })
+          title: res.data.title,
+          post_content: res.data.post_content,
+          id_post: res.data.id_post,
+          editing: true
+      });
     }
   }
 
   handleOnSubmit = async (e) => {
     e.preventDefault();
-    const newPost = {
-      title: this.state.title,
-      post_content: this.state.post_content
-    }
     if(this.state.editing){
-      //edit
-      await axios.put('http://localhost:3000/api/post', newPost)
+      const updatedPost = {
+        title: this.state.title,
+        post_content: this.state.post_content
+    };
+      await axios.put('http://localhost:3000/api/post', this.state.id_post, updatedPost)
     } else {
-      //create
-      await axios.post('http://localhost:3000/api/post', newPost)
+      const newPost = {
+        title: this.state.title,
+        post_content: this.state.post_content
+      }
+      axios.post('http://localhost:3000/api/post', newPost)
     }
-
-    
     window.location.href = '/';
   }
 
