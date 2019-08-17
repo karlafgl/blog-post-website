@@ -32,7 +32,8 @@ export default class CreatePost extends Component {
         title: this.state.title,
         post_content: this.state.post_content
     };
-      await axios.put('http://localhost:3000/api/post', this.state.id_post, updatedPost)
+      const res = await axios.put('http://localhost:3000/api/post/' + this.state.id_post, updatedPost)
+      console.log(res)
     } else {
       const newPost = {
         title: this.state.title,
