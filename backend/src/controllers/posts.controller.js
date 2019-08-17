@@ -43,12 +43,10 @@ postsCtrl.createPost = (req, res) => {
 postsCtrl.updatePost = (req, res) => {
   const { title, post_content } = req.body;
   const { id } = req.params;
-  mysqlConnection.query(`UPDATE post 
-                        SET title = ${title}, post_content = ${post_content}  
-                        WHERE id_post = ${id}
-                        `, (err, rows, fields) => {
+  mysqlConnection.query(`UPDATE post SET title = '${title}', post_content = '${post_content}' WHERE id_post = '${id}'`, 
+    (err, rows, fields) => {
     if(!err) {
-      res.json({STATUS: 'post actualizado'})
+      res.json(rows)
     } else {
       console.log(err)
     }
