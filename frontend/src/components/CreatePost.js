@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export default class CreatePost extends Component {
 
-  state={
+  state = {
     posts: [],
     title: '',
     post_content: '',
@@ -49,6 +49,7 @@ export default class CreatePost extends Component {
     })
   }
 
+  
   render(){
     return(
       <div className="col-md-6 offset-md-3">

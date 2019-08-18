@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-// import UpdatePost from './UpdatePost';
 
 export default class PostsList extends Component {
 
@@ -52,13 +51,12 @@ export default class PostsList extends Component {
                                     <ul className="list-unstyled list-inline font-small" style={{fontSize: '1.4em'}}>
                                         <li className="list-inline-item pr-2 text-white"><i className="fa fa-clock-o mr-2" aria-hidden="true"></i>{post.created_at}</li>
                                     </ul>
-                                    <div clasName="float-sm-right">
+                                    <div className="float-sm-right">
                                     <ul  style={{fontSize: '1.4em'}}>
                                         <li className="list-inline-item pr-2 mr-4"><a href="/" className="text-white" ><i className="fa fa-facebook" aria-hidden="true"></i></a></li>
                                         <li className="list-inline-item ml-4"><a href="/" className="text-white"><i className="fa fa-twitter" aria-hidden="true"></i></a></li>
                                     </ul>
                                     </div>
-                                   
                                 </div>
                             </div>
                         </div>
